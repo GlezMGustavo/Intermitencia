@@ -38,9 +38,9 @@ for (est in 5:65) {
     B <- 0
     RI <- as.vector(1:round(n[j])); RI[] <- NA
     for(i in 1:(round(n[j])-1)){
-      RI[i] <- (DF9317[i,c(est)] - DF9317[(i+(2^(j-1))), c(est)])*(6/2^(j-1)) # mm/hr
+      RI[i] <- (DF9317[i+1,c(est)] - DF9317[i, c(est)])/(1/6)) # mm/hr (entre 10 min)
     }
-    B <- sum(abs(RI/(1/6))^2*(1/6),na.rm=T)
+    B <- sum(abs(RI)^2*(1/6),na.rm=T)
     X[j] <- B/tau[j]
   }
   
